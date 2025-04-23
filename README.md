@@ -1,4 +1,9 @@
-# Ali's .dotfiles
+# Aditya's .dotfiles
+
+Borrowed verbatim from [Ali's dotfiles](https://github.com/alihassanijr/.dotfiles). All the following text is verbatim from Ali's dotfiles, with no changes so far.
+
+---
+
 Disclaimer: this README is very much outdated.
 
 I started off [Steven's .dotfiles](https://github.com/stevenwalton/.dotfiles), and changed these as I went.
