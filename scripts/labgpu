@@ -1,0 +1,40 @@
+#! /bin/bash
+
+if [[ "$TERM_PROGRAM" == "tmux" ]]; then
+  tmux new-window
+
+  for i in $(seq 0 7)
+  do
+    tmux split-pane
+        tmux select-layout tiled
+  done
+
+  echo "created all panes"
+
+    for shiGTIdx in $(seq 0 3)
+    do
+        tmux select-pane -t $(($shiGTIdx))
+        tmux send-keys -t $((shiGTIdx)) "ssh -q akane38@shi-0$(($shiGTIdx + 1)).cc.gatech.edu" C-m
+        tmux send-keys -t $((shiGTIdx)) "fancy-smi -r 1" C-m
+    done
+
+  for shiIdx in $(seq 4 8)
+  do
+    tmux select-pane -t $shiIdx
+    tmux send-keys -t $shiIdx "ssh -q akane@shi-0$(($shiIdx -1 )).cs.uoregon.edu" C-m
+    tmux send-keys -t $shiIdx "fancy-smi -r 1" C-m
+  done
+
+fi
+
+if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]]; then
+  tmux new-session -d -s "gpustats"
+  tmux send-keys -t gpustats labgpu ENTER
+  tmux attach-session -t gpustats
+fi
+
+if [[ "$TERM_PROGRAM" == "" ]]; then
+  tmux new-session -d -s "gpustats"
+  tmux send-keys -t gpustats labgpu ENTER
+  tmux attach-session -t gpustats
+fi
