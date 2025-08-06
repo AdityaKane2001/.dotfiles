@@ -62,7 +62,6 @@ link_custom_scripts() {
   link_bin "Tmux shortcuts (4wc)" "scripts/4wc" "4wc"
   link_bin "Tmux shortcuts (devsetup)" "scripts/devsetup" "devsetup"
 
-  link_bin "Scontrol Job update" "scripts/scontrol_update" "sc_up"
 
   # SSH Agent Init
   if [[ "$OSTYPE" == "darwin"* ]]; then
