@@ -5,4 +5,5 @@ dirname=${1:-.}
 tmux split-window -h \
        && tmux send-keys -t .0 cd Space $dirname Enter\
        && tmux send-keys -t .1 cd Space $dirname Enter\
+       && tmux resize-pane -R 40\
        && tmux select-pane -L

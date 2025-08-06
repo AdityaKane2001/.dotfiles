@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+dirname=${1:-.}
+
+tmux split-window -h \
+       && tmux send-keys -t .0 htop Enter\
+       && tmux send-keys -t .1 nvitop Enter\
+       && tmux select-pane -L
+
+tmux new-window \
+       && tmux split-window -h \
+       && tmux resize-pane -R 50\
+       && tmux select-pane -L\
+       && tmux send-keys -t .0 cd Space $dirname Enter clear Enter \
+       && tmux send-keys -t .1 cd Space $dirname Enter clear Enter \
+
+tmux new-window \
+       && tmux split-window -v -t . \
+       && tmux split-window -h -t .1 \
+       && tmux split-window -h -t .0 \
+       && tmux send-keys -t .0 cd Space $dirname Enter clear Enter "watch squeue" Enter \
+       && tmux send-keys -t .1 cd Space $dirname Enter clear Enter "watch sinfo --partition=h100" Enter \
+       && tmux send-keys -t .2 cd Space $dirname Enter clear Enter \
+       && tmux send-keys -t .3 cd Space $dirname Enter clear Enter \
+       && tmux select-pane -L
