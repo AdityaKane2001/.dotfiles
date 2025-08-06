@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Prompt for start and end job ID, and node list
+read -p "Enter the start job ID: " start_id
+read -p "Enter the end job ID: " end_id
+read -p "Enter the node list (comma-separated): " nodelist
+
+# Confirm inputs
+echo "Updating jobs from $start_id to $end_id with nodes: $nodelist"
+read -p "Proceed? (y/n): " confirm
+if [[ $confirm != [yY] ]]; then
+    echo "Aborted."
+    exit 1
+fi
+
+# Loop through the range and update each job
+for (( id=start_id; id<=end_id; id++ )); do
+    echo "Updating JobId=$id..."
+    scontrol update JobId=$id ReqNodeList="$nodelist"
+done
+
+echo "All jobs updated."
+
