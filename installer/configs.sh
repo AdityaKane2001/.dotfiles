@@ -62,7 +62,6 @@ link_custom_scripts() {
   link_bin "Tmux shortcuts (4wc)" "scripts/4wc" "4wc"
   link_bin "Tmux shortcuts (devsetup)" "scripts/devsetup" "devsetup"
 
-
   # SSH Agent Init
   if [[ "$OSTYPE" == "darwin"* ]]; then
     link_bin "SSH agent initializer (sagent)" "scripts/sagent.mac" "sagent"
