@@ -61,6 +61,7 @@ link_custom_scripts() {
   # Tmux split shortcuts
   link_bin "Tmux shortcuts (4w)" "scripts/4w" "4w"
   link_bin "Tmux shortcuts (4wc)" "scripts/4wc" "4wc"
+  link_bin "Tmux shortcuts (devsetup)" "scripts/devsetup" "devsetup"
 
   # SSH Agent Init
   if [[ "$OSTYPE" == "darwin"* ]]; then

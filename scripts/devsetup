@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+dirname=${1:-.}
+
+tmux split-window -h \
+       && tmux send-keys -t .0 htop Enter\
+       && tmux send-keys -t .1 nvitop Enter\
+       && tmux select-pane -L
+
+tmux new-window \
+       && tmux split-window -h \
+       && tmux resize-pane -R 50\
+       && tmux select-pane -L\
+       && tmux send-keys -t .0 cd Space $dirname Enter clear Enter \
+       && tmux send-keys -t .1 cd Space $dirname Enter clear Enter \

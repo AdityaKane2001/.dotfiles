@@ -6,10 +6,11 @@
 # Alacritty
 source installer/dependencies/alacritty.sh
 ensure_alacritty() {
-  if [[ -f "$(which $DEP_NAME)" ]]; then
-    echo "Looks like you have alacritty installed."
-    configure_dependency "alacritty" "configure_alacritty"
-  fi
+  # if [[ -f "$(which $DEP_NAME)" ]]; then
+  #   echo "Looks like you have alacritty installed."
+  #   configure_dependency "alacritty" "configure_alacritty"
+  # fi
+  configure_dependency "alacritty" "configure_alacritty"
 }
 
 # Autoconf
